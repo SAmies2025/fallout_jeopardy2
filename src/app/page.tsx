@@ -1,53 +1,33 @@
 import Link from "next/link";
 
-import { LatestPost } from "~/app/_components/post";
-import { api, HydrateClient } from "~/trpc/server";
+export const metadata = {
+  title: "Fallout Jeopardy",
+};
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
+  // const hello = await api.post.hello({ text: "from tRPC" });
 
-  void api.post.getLatest.prefetch();
+  // void api.post.getLatest.prefetch();
 
   return (
-    <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-          </h1>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/usage/first-steps"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">First Steps →</h3>
-              <div className="text-lg">
-                Just the basics - Everything you need to know to set up your
-                database and authentication.
-              </div>
-            </Link>
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/introduction"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">Documentation →</h3>
-              <div className="text-lg">
-                Learn more about Create T3 App, the libraries it uses, and how
-                to deploy it.
-              </div>
-            </Link>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-              {hello ? hello.greeting : "Loading tRPC query..."}
-            </p>
-          </div>
-
-          <LatestPost />
-        </div>
-      </main>
-    </HydrateClient>
+  <div className="min-h-screen w-screen overflow-hidden bg-[var(--color-bg)] text-[var(--color-text)] flex flex-col items-center justify-center">
+    <title>Fallout Jeopardy</title>
+    <h1 className="text-center text-4xl font-bold my-8 drop-shadow-lg">
+      Welcome to Fallout Jeopardy!
+    </h1>
+    <img
+      src="/img/index.jpg"
+      alt="Vault Boy giving the thumbs up"
+      className="mx-auto block"
+    />
+    <div className="flex justify-center my-6">
+      <button className="align-middle">
+        <a href="">PLAY</a>
+      </button>
+    </div>
+    <footer className="flex justify-center my-6">
+      <sub>Fallout Jeopardy is not affiliated with Bethesda Softworks and answers may be 100% wrong. It just works.</sub>
+    </footer>
+</div>
   );
 }
