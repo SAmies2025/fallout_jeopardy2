@@ -7,4 +7,8 @@ import "./src/env.js";
 /** @type {import("next").NextConfig} */
 const config = {};
 
-export default config;
+// next.config.js (ESM style)
+export default {
+  reactStrictMode: true,
+  //swcMinify: true, depricated. Minifies code. using SWC. Now does this by default
+};
